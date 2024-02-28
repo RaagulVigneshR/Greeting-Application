@@ -1,11 +1,16 @@
 package com.bridgelabz.GreetingApplication.entities;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table
 public class GreetingEntities {
 	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	private long id;
 	private String name;
 	private String message;
@@ -27,15 +32,9 @@ public class GreetingEntities {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	public GreetingEntities(long id, String name, String message) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.message = message;
-	}
-	public GreetingEntities() {
-		super();
-		// TODO Auto-generated constructor stub
+	@Override
+	public String toString() {
+		return "GreetingEntities [id=" + id + ", name=" + name + ", message=" + message + "]";
 	}
 	
 

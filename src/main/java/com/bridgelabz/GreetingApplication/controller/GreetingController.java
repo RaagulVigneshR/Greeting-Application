@@ -17,7 +17,7 @@ import com.bridgelabz.GreetingApplication.service.MyService;
 @RestController
 public class GreetingController {
 	@Autowired
-	MyService service;
+	private MyService service;
 	
 	@GetMapping("/greetings")
 	public List<GreetingEntities> getGreetings(){
