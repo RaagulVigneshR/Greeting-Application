@@ -8,5 +8,11 @@ public interface MyService {
 	public void addGreeting(GreetingEntities msg);
 	public void putGreeting(GreetingEntities msg);
 	public void deleteGreeting(long id);
+	/*
+	 * - save greetings
+	 * - get greetings
+	 * - get all greeting
+	 * - delete greetings by id
+	 */
 
 }
