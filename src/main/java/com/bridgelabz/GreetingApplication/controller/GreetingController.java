@@ -24,37 +24,41 @@ public class GreetingController {
 		return this.service.getGreetings();		
 	}
 	
-	@GetMapping("/greetings/{greetingId}")
+	@GetMapping("/getgreetings/{greetingId}")
 	public GreetingEntities getGreeting(@PathVariable String greetingId) {
 		return this.service.getGreeting(Long.parseLong(greetingId));
 		
 	}
 	
-	@PostMapping("/greetings")
-	public ResponseEntity<HttpStatus> postGreetings(@RequestBody GreetingEntities msg){
+	@PostMapping("/postgreetings")
+	public ResponseEntity<String> postGreetings(@RequestBody GreetingEntities msg){
 		try{
 			this.service.addGreeting(msg);
-			return new ResponseEntity<>(HttpStatus.OK);
+			String responseBody = "Response from POST request : Has be Added successfully";
+			return new ResponseEntity<>(responseBody,HttpStatus.OK);
 		}catch(Exception e) {
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 	
-	@PutMapping("/greetings")
-	public ResponseEntity<HttpStatus> updateGreetings(@RequestBody GreetingEntities msg){
+	@PutMapping("/putgreetings")
+	public ResponseEntity<String> updateGreetings(@RequestBody GreetingEntities msg){
 		try{
 			this.service.putGreeting(msg);
-			return new ResponseEntity<>(HttpStatus.OK);
+			String responseBody = "Response from PUT request for MSG: Altered successfully";
+			
+			return new ResponseEntity<>(responseBody,HttpStatus.OK);
 		}catch(Exception e) {
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 	
-	@DeleteMapping("/greetings/{greetingId}")
-	public ResponseEntity<HttpStatus> deleteGreetings(@PathVariable String greetingId){
+	@DeleteMapping("/deletegreetings/{greetingId}")
+	public ResponseEntity<String> deleteGreetings(@PathVariable String greetingId){
 		try{
 			this.service.deleteGreeting(Long.parseLong(greetingId));
-			return new ResponseEntity<>(HttpStatus.OK);
+			String responseBody = "Response from Delete request for ID: " + greetingId + " Has been removed successfully";
+			return new ResponseEntity<>(responseBody,HttpStatus.OK);
 		}catch(Exception e) {
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
